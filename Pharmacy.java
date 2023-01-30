@@ -1,20 +1,20 @@
-public class LinkedList<T>{
-	private Node<T>head;
-	private Node<T>tail;
-	public LinkedList() {
+public class Pharmacy<T>{
+	private Medicine<T>head;
+	private Medicine<T>tail;
+	public Pharmacy() {
 		this.head = null;
 	}
-	public Node<T> getHead(){
+	public Medicine<T> getHead(){
 		return head;
 	}
-    public Node<T> getTail(){
+    public Medicine<T> getTail(){
 		return tail;
 	}
 
-	public void setTail(Node<T>newNode) {
+	public void setTail(Medicine<T>newNode) {
 		this.tail = newNode;
 	}
-    public void setHead(Node<T>newNode) {
+    public void setHead(Medicine<T>newNode) {
 		this.head = newNode;
 	}
 	public boolean isEmpty() {
@@ -23,14 +23,13 @@ public class LinkedList<T>{
 		}
 		return false;
 	}
-	public void addMedicine(Node<T>newNode) {
+	public void addMedicine(Medicine<T>newNode) {
 		if(isEmpty()) {
             setHead(newNode);
             setTail(newNode);
 		}
 		else {
             
-		//Node<T>curr = getHead();
 		
 		newNode.setNext(getHead());
         setHead(newNode);
@@ -38,10 +37,10 @@ public class LinkedList<T>{
 		}
 	}
 	public void deleteMedicineByNameAndId (String name ,String id  ) {
-        Node<T> curr=getHead();
-        Node<T> prev=null;
+        Medicine<T> curr=getHead();
+        Medicine<T> prev=null;
         if (getHead() ==null){
-            System.out.println("there is no medicine");
+            System.out.println(" no medicine in the storage ");
         }
 
         else if( getHead()==getTail()){
@@ -72,14 +71,14 @@ public class LinkedList<T>{
     
     
     public void searchForMedicineUsingGivenID(String id){
-        Node<T> curr =getHead();
+        Medicine<T> curr =getHead();
         boolean flag=true;
-        if(isEmpty())System.out.println("there is no medicine");
+        if(isEmpty())System.out.println(" no medicine in the storage");
 
         else if (!isEmpty()){
             while (curr!=null){
                 if(curr.getID().equals(id)){
-                    System.out.println("the medicine are there ");
+                    System.out.println("[ID: "+curr.getID()+" Name: "+curr.getName()+" Company: "+curr.getCompany()+" Price: "+curr.getPrice()+"]");
                     flag=false;
                 }
                 curr=curr.getNext();
@@ -91,7 +90,7 @@ public class LinkedList<T>{
 
     }
     public void updateMedicineUsingTheID (String id, String name ,String company ,float price){
-        Node<T>curr=getHead();
+        Medicine<T>curr=getHead();
         boolean flag=true;
         while(curr!=null){
             if(curr.getID().equals(id)){
@@ -105,9 +104,9 @@ public class LinkedList<T>{
         if (flag)System.out.println("incorrect ID");
     }
     void sortList() {
-        Node<T> current = head;
+        Medicine<T> current = head;
         while (current != null) {
-            Node<T> index = current.getNext();
+            Medicine<T> index = current.getNext();
             while (index != null) {
                 if (current.getID().compareTo(index.getID()) > 0) {
                     String id = current.getID();
@@ -131,17 +130,16 @@ public class LinkedList<T>{
             current = current.getNext();
         }
     }
-   // public void printAllMedicines (){}
 
 	public void printAllMedicines() {
 		if(!isEmpty()) {
-		Node<T>curr = getHead();
+		Medicine<T>curr = getHead();
 		while(curr != null) {
             System.out.println("[ID: "+curr.getID()+" Name: "+curr.getName()+" Company: "+curr.getCompany()+" Price: "+curr.getPrice()+"]");
             curr = curr.getNext();
 		}
 		}else {
-			System.out.println("The LinkedList is an Empty!");
+			System.out.println("The storage is  Empty");
 		}
 	}
 }

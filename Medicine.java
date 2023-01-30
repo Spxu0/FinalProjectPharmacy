@@ -1,11 +1,11 @@
-public class Node<T>{
+public class Medicine<T>{
     private String ID;
     private String name;
     private String company;
     private float price;
-	private Node<T>next;
+	private Medicine<T>next;
 	
-	public Node(String iD, String name, String company, float f) {
+	public Medicine(String iD, String name, String company, float f) {
         ID = iD;
         this.name = name;
         this.company = company;
@@ -44,24 +44,13 @@ public class Node<T>{
         this.price = price;
     }
 
-    public Node<T> getNext() {
+    public Medicine<T> getNext() {
         return next;
     }
 
-    public void setNext(Node<T> next) {
+    public void setNext(Medicine<T> next) {
         this.next = next;
     }
     
-	// public Node<T> getNext(){
-	// 	return next;
-	// }
-	// public void setNext(Node<T>node) {
-	// 	this.next = node;
-	// }
-	// public T getData() {
-	// 	return data;
-	// }
-	// public String toString() {
-	// 	return String.valueOf(data);
-	// }
+	
 }
